@@ -1,6 +1,7 @@
 # Tower of Hanoi
-_The formula for calculating minimum moves it takes to complete a Tower of Hanoi is (n is the number of discs):
-M<sub>n</sub> = 2<sup>n</sup> - 1_
+The formula for calculating the number of minimum moves it takes to complete a Tower of Hanoi is:
+<strong>M<sub>n</sub> = 2<sup>n</sup> - 1</strong>
+where n is the number of discs
 
 ## Implementation of a recursive algorithm
 ```
