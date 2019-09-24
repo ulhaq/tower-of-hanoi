@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Tower of Hanoi</title>
+    <style>
+        div {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form onsubmit="return main(event);">
+            <input type="text" id="number" placeholder="Number of discs" />
+            <input type="submit" />
+        </form>
+    </div>
+
+    <div id="rs"></div>
+
+    <script>
+        var source = "source";
+        var intermediate = "intermediate";
+        var target = "target";
+        var rs = document.getElementById("rs");
+        var count = 0;
+
+        function main(e) {
+            e.preventDefault();
+            rs.innerHTML = "";
+
+            let n = document.getElementById("number").value;
+            count = 0;
+
+            calculate(n, source, intermediate, target);
+            rs.insertAdjacentHTML("afterbegin", `<h3><p>Total moves: ${count}</p></h3>`);
+        }
+
+        function calculate(n, source, intermediate, target) {
+            if (n == 1) {
+                log(`Disk ${n}: ${source} -> ${target}`);
+                count++;
+                return;
+            }
+
+            calculate(n - 1, source, target, intermediate);
+            log(`Disk ${n}: ${source} -> ${target}`);
+            calculate(n - 1, intermediate, source, target);
+            count++;
+        }
+
+        function log(data) {
+            rs.insertAdjacentHTML("beforeend", `<div>${data}</div>`);
+        }
+    </script>
+</body>
+</html>
